@@ -1,0 +1,32 @@
+{
+  "name": "sizer",
+  "version": "0.1.0",
+  "description": "Filter files by size",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test/index.js | node_modules/.bin/tspec"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/scottcorgan/sizer.git"
+  },
+  "keywords": [
+    "filter",
+    "files",
+    "size",
+    "stat",
+    "file"
+  ],
+  "author": "Scott Corgan",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/scottcorgan/sizer/issues"
+  },
+  "devDependencies": {
+    "tape": "~2.3.2"
+  },
+  "dependencies": {
+    "shrub": "~0.2.0",
+    "minimatch": "~0.2.14"
+  }
+}
