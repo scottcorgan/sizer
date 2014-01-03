@@ -1,7 +1,7 @@
 {
   "name": "sizer",
   "version": "0.1.0",
-  "description": "Filter files by size",
+  "description": "Filter files by size recursively",
   "main": "index.js",
   "scripts": {
     "test": "node test/index.js | node_modules/.bin/tspec"
@@ -23,7 +23,8 @@
     "url": "https://github.com/scottcorgan/sizer/issues"
   },
   "devDependencies": {
-    "tape": "~2.3.2"
+    "tape": "~2.3.2",
+    "tap-spec": "0.0.1"
   },
   "dependencies": {
     "shrub": "~0.2.0",

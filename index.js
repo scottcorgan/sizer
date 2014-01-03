@@ -1,9 +1,22 @@
 var shrub = require('shrub');
 var path = require('path');
 var minimatch = require('minimatch');
+var sizer = {};
 
-var sizer = {
-  bigger: function (size, dir, options, callback) {
+// Define our size comparisons 
+var methods = {
+  'bigger': function (fileSize, baseSize) {
+    return fileSize > baseSize;
+  },
+  
+  'smaller': function (fileSize, baseSize) {
+    return fileSize < baseSize;
+  }
+}
+
+// Create the sizer methods
+Object.keys(methods).forEach(function (method) {
+  sizer[method] = function (size, dir, options, callback) {
     if (arguments[3] === undefined) {
       callback = options;
       options = {};
@@ -17,7 +30,7 @@ var sizer = {
         var shouldIgnore = options.ignore.filter(function (glob) {
           return minimatch(file, glob);
         }).length;
-        var tooBig = (shouldIgnore) ? false : stats.size > size;
+        var tooBig = (shouldIgnore) ? false : methods[method](stats.size, size);
         
         next(tooBig);
       })
@@ -29,6 +42,6 @@ var sizer = {
         callback(null, files);
       });
   }
-};
+});
 
 module.exports = sizer;

@@ -11,6 +11,13 @@ test('filters files bigger than a value', function (t) {
   });
 });
 
+test('filters files smaller than than a value', function (t) {
+  sizer.smaller(ONE_KB, dir, {}, function (err, files) {
+    t.deepEqual(files, ['test/mock/600b.js'], 'returns array of files')
+    t.end();
+  });
+});
+
 test('options are optional', function (t) {
   sizer.bigger(ONE_KB, dir, function (err, files) {
     t.deepEqual(files, ['test/mock/4kb.js'], 'returns array of files')
