@@ -20,14 +20,14 @@ sizer.bigger(1000, __dirname, function (err, files) {
 
 ## Api
 
-### bigger(bytes, directory[, options], callback)
+### bigger(bytes, directory[, ignore], callback)
 
 * `bytes` - size in bytes to compare the files to
 * `directory` - the directory containing the files
 * `ignore` - (OPTIONAL) an array of files to ignore (uses [minimatch](https://github.com/isaacs/minimatch) to compare)
 * `callback` - gets called when call files have been compared
 
-### smaller(bytes, directory[, options], callback)
+### smaller(bytes, directory[, ignore], callback)
 
 * `bytes` - size in bytes to compare the files to
 * `directory` - the directory containing the files
