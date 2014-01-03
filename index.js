@@ -16,18 +16,16 @@ var methods = {
 
 // Create the sizer methods
 Object.keys(methods).forEach(function (method) {
-  sizer[method] = function (size, dir, options, callback) {
+  sizer[method] = function (size, dir, ignore, callback) {
     if (arguments[3] === undefined) {
-      callback = options;
-      options = {};
+      callback = ignore;
+      ignore = [];
     }
-    
-    options.ignore = options.ignore || [];
     
     shrub(dir)
       .filter(function (filePath, stats, next) {
         var file = filePath.replace(process.cwd() + '/', ''); // get relative path
-        var shouldIgnore = options.ignore.filter(function (glob) {
+        var shouldIgnore = ignore.filter(function (glob) {
           return minimatch(file, glob);
         }).length;
         var tooBig = (shouldIgnore) ? false : methods[method](stats.size, size);
